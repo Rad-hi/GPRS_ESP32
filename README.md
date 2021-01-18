@@ -1,4 +1,4 @@
-#Connect your ESP32 WROVER-B (TTGO T-CALL) to the cellular network
+# Connect your ESP32 WROVER-B (TTGO T-CALL) to the cellular network
 
 This code is part of a bigger project in which there are a lot of modules in play, that's why the setup is devided into steps.
 
