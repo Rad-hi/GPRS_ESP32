@@ -35,8 +35,6 @@ void setup() {
    */
 }
 
-unsigned long last_check = 0;
-
 void loop() {
   
   // Do whatever you want with GPRS here
