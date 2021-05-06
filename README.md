@@ -1,14 +1,12 @@
 # Connect your ESP32 WROVER-B (TTGO T-CALL) to the cellular network
 
-This code is part of a bigger project in which there are a lot of modules in play, that's why the setup is devided into steps.
-
 The goal behind deviding the setup into multiple steps is multitasking in the setup of the whole project, hence speeding up the setup process.
 
-By making the setup process of all the modules go in steps, I was able to put all the setups in a single loop that only ends when all modules are ready, and always executes the module that's ready to go to the next step in the setup process by using two things:
+But, it's not actually necessary to use the stepped setup process, since a simple call to ``` GPRS_wake_up() ``` will setup the Sim800L module and connect to the cellular network.
 
-- State machine programming: I keep track of the state of each module during the setup process and I check the state in order to assign the right setup step.
+I provided a function to put the Sim800L module to sleep, unfortunately, having the Sim800L module soldered to the board, I couldn't wake up the module correctly since it requires a pin that's not accessible to be toggled BUT I'm successfully putting it to sleep, and restarting the whole module each time i'm waking it up. So if you're not connecting to the internet that frequently, this might actually be benefecial, but if you're sleeping and waking up each couple of seconds, this might not be the best option since the Sim800L needs around 6 seconds to wake up, which is alot!
 
-- Using millis(): millis() is a builtin timer that starts counting by the startup of the MCU (in this case, the esp32) and just keeps on coundting the milliseconds that elapsed since the booting, and by calling millis(), we could retreive that elapsed period, hence we have a time reference to compare to and not block the MCU by using delays.
+---
 
 Some useful findings about the TTGO T-CALL module (or the SIM800L):
 
